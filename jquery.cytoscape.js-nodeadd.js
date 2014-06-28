@@ -1,10 +1,14 @@
 ;
 (function($, $$) {
     var defaults = {
-        height: 50,
-        width: 50,
+        height: 30,
+        width: 30,
         padding: 10,
-        icon: 'fa fa-circle fa-2x'
+        icon: 'fa fa-circle fa-2x',
+        backgroundColorDiv: '#fff',
+        borderColorDiv: '#CFCFCF',
+        borderWidthDiv: '2px',
+        borderRadiusDiv: '5px'
     };
 
     $.fn.cytoscapeNodeadd = function(params) {
@@ -29,10 +33,13 @@
 
                     function setUpUI() {
                         $(".ui-cytoscape-nodeadd-nodediv").css({
+                            background: options.backgroundColorDiv,
                             height: options.height,
                             width: options.width,
                             right: ($(window).width() - $container.offset().left - $container.width()) + options.padding,
-                            top: $container.offset().top + options.padding
+                            top: $container.offset().top + options.padding,
+                            border: options.borderWidthDiv + ' solid ' + options.borderColorDiv,
+                            'border-radius': options.borderRadiusDiv
                         });
                     }
                     setUpUI();
