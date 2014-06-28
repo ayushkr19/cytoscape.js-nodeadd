@@ -21,3 +21,7 @@
      -moz-box-sizing: content-box;
           box-sizing: content-box;
 }
+
+#ui-cytoscape-nodeadd-icon{
+	cursor: pointer;
+}
