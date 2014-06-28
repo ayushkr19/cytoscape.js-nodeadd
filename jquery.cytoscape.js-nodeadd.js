@@ -27,50 +27,56 @@
                     var $nodeDragHandle = $('<div class="ui-cytoscape-nodeadd-nodediv"> <span id="ui-cytoscape-nodeadd-icon" class="draggable icon ' + options.icon + '"></span></div>');
                     $nodeadd.append($nodeDragHandle);
 
-                    $(".ui-cytoscape-nodeadd-nodediv").css({
-                        height: options.height,
-                        width: options.width,
-                        //right: $container.offset().left + 'px',
-                        right: ($(window).width() - $container.offset().left - $container.width()) + options.padding,
-                        top: $container.offset().top + options.padding
-                    });
+                    function setUpUI() {
+                        $(".ui-cytoscape-nodeadd-nodediv").css({
+                            height: options.height,
+                            width: options.width,
+                            right: ($(window).width() - $container.offset().left - $container.width()) + options.padding,
+                            top: $container.offset().top + options.padding
+                        });
+                    }
+                    setUpUI();
 
-                    $("#ui-cytoscape-nodeadd-icon").draggable({
-                        helper: "clone"
-                    });
+                    function initDraggable() {
+                        $("#ui-cytoscape-nodeadd-icon").draggable({
+                            helper: "clone"
+                        });
+                    }
+                    initDraggable();
 
-                    $container.droppable({
-                        //activeClass: "ui-state-highlight",
-                        accept: "#ui-cytoscape-nodeadd-icon",
-                        drop: function(event, ui) {
-                            $container.removeClass("ui-state-highlight");
+                    function initDroppable() {
+                        $container.droppable({
+                            activeClass: "ui-state-highlight",
+                            accept: "#ui-cytoscape-nodeadd-icon",
+                            drop: function(event, ui) {
+                                $container.removeClass("ui-state-highlight");
 
-                            var currentOffset = $container.offset();
-                            var relX = event.pageX - currentOffset.left;
-                            var relY = event.pageY - currentOffset.top;
+                                var currentOffset = $container.offset();
+                                var relX = event.pageX - currentOffset.left;
+                                var relY = event.pageY - currentOffset.top;
 
-                            var cy = $container.cytoscape("get");
-                            cy.add({
-                                group: "nodes",
-                                renderedPosition: {
-                                    x: relX,
-                                    y: relY
-                                }
-                            });
+                                var cy = $container.cytoscape("get");
+                                cy.add({
+                                    group: "nodes",
+                                    renderedPosition: {
+                                        x: relX,
+                                        y: relY
+                                    }
+                                });
 
-                        }
-                    });
-
-                    var handler = function(e) {
-                        e.stopPropagation(); // don't trigger dragging of panzoom
-                        e.preventDefault(); // don't cause text selection
-
-                        //alert("Handler called");
-                    };
+                            }
+                        });
+                    }
+                    initDroppable();
 
                     $nodeDragHandle.bind("mousedown", function(e) {
                         handler(e);
                     });
+
+                    var handler = function(e) {
+                        e.stopPropagation(); // don't trigger dragging of nodeadd
+                        e.preventDefault(); // don't cause text selection
+                    };
 
 
 
