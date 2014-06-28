@@ -1,5 +1,5 @@
 ;
-(function($, $$) {
+(function($) {
     var defaults = {
         height: 30,
         width: 30,
@@ -103,4 +103,4 @@
 
     $.fn.cynodeadd = $.fn.cytoscapeNodeadd;
 
-})(jQuery, cytoscape);
+})(jQuery);
