@@ -1,14 +1,15 @@
 ;
 (function($, $$) {
     var defaults = {
-        height: 30,
-        width: 30,
-        padding: 10,
-        icon: 'fa fa-circle fa-2x',
-        backgroundColorDiv: '#fff',
-        borderColorDiv: '#CFCFCF',
-        borderWidthDiv: '2px',
-        borderRadiusDiv: '5px'
+        height: 30,   //height of the icon container
+        width: 30,    //width of the icon container
+        padding: 10,  //padding of the icon container(from right & top)
+        backgroundColorDiv: '#fff',   //background color of the icon container
+        borderColorDiv: '#CFCFCF',    //border color of the icon container
+        borderWidthDiv: '2px',    //border width of the icon container
+        borderRadiusDiv: '5px',    //border radius of the icon container
+        
+        icon: 'fa fa-circle fa-2x',   //icon class name
     };
 
     $.fn.cytoscapeNodeadd = function(params) {
