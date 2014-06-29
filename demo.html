@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="Demo for Nodeadd cytoscape.js extension">
+        <title>Cytoscape.js extension demo : NodeAdd</title>
+
+        <link rel="stylesheet" href="cytoscape.js-nodeadd.css">
+        <link rel="stylesheet" href="font-awesome-4.1.0/css/font-awesome.min.css">
+
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.11.0/jquery-ui.min.js"></script>
+        <script src="https://cytoscape.github.io/cytoscape.js/api/cytoscape.js-latest/cytoscape.min.js"></script>
+        <script src="cytoscape.js-nodeadd.js"></script>
+
+        <style>
+			body {
+				font-family: helvetica;
+				font-size: 14px;
+			}
+			#cy {
+				width: 600px;
+				height: 600px;
+				border: 1px solid #888;
+			}
+		</style>
+
+		<script>
+			$(function(){
+				var cy = cytoscape({
+					container: document.getElementById('cy'),
+
+					style: [
+						{
+							selector: 'node',
+							css: {
+								'content': 'data(name)'
+							}
+						},
+
+						{
+							selector: 'edge',
+							css: {
+								'target-arrow-shape': 'triangle'
+							}
+						}
+					],
+
+					elements: {
+						nodes: [
+							{ data: { id: 'j', name: 'Jerry' } },
+							{ data: { id: 'e', name: 'Elaine' } },
+							{ data: { id: 'k', name: 'Kramer' } },
+							{ data: { id: 'g', name: 'George' } }
+						],
+						edges: [
+							{ data: { source: 'j', target: 'e' } },
+							{ data: { source: 'j', target: 'k' } },
+							{ data: { source: 'j', target: 'g' } },
+							{ data: { source: 'e', target: 'j' } },
+							{ data: { source: 'e', target: 'k' } },
+							{ data: { source: 'k', target: 'j' } },
+							{ data: { source: 'k', target: 'e' } },
+							{ data: { source: 'k', target: 'g' } },
+							{ data: { source: 'g', target: 'j' } }
+						]
+					},
+				});
+
+				cy.nodeadd({
+					// options go here
+				});
+
+			});
+		</script>
+
+    </head>
+    <body>
+    <h1>Cytoscape.js Nodeadd Extension Demo</h1>
+
+		<div id="cy"></div>
+    </body>
+</html>
