@@ -1,5 +1,5 @@
 ;
-(function($) {
+(function($, $$) {
     var defaults = {
         height: 30,
         width: 30,
@@ -103,4 +103,11 @@
 
     $.fn.cynodeadd = $.fn.cytoscapeNodeadd;
 
-})(jQuery);
+    /* Adding as an extension to the core functionality of cytoscape.js*/
+    $$('core', 'nodeadd', function(options) {
+        var cy = this;
+
+        $(cy.container()).cytoscapeNodeadd(options);
+    });
+
+})(jQuery, cytoscape);
