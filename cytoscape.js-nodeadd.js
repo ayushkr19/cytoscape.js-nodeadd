@@ -3,10 +3,10 @@
     var defaults = {
         height: 30,   //height of the icon container
         width: 30,    //width of the icon container
-        padding: 10,  //padding of the icon container(from right & top)
+        padding: 3,  //padding of the icon container(from right & top)
         backgroundColorDiv: '#fff',   //background color of the icon container
         borderColorDiv: '#CFCFCF',    //border color of the icon container
-        borderWidthDiv: '2px',    //border width of the icon container
+        borderWidthDiv: '1px',    //border width of the icon container
         borderRadiusDiv: '5px',    //border radius of the icon container
         
         icon: 'fa fa-circle fa-2x',   //icon class name
@@ -47,7 +47,8 @@
 
                     function initDraggable() {
                         $("#ui-cytoscape-nodeadd-icon").draggable({
-                            helper: "clone"
+                            helper: "clone",
+                            cursor: "pointer"
                         });
                     }
                     initDraggable();
