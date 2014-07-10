@@ -10,6 +10,11 @@
         borderRadiusDiv: '5px',    //border radius of the icon container
         
         icon: 'fa fa-circle fa-2x',   //icon class name
+
+        nodeParams: function(){
+            // return element object to be passed to cy.add() for adding node
+            return {};
+        }
     };
 
     $.fn.cytoscapeNodeadd = function(params) {
@@ -65,13 +70,13 @@
                                 var relY = event.pageY - currentOffset.top;
 
                                 var cy = $container.cytoscape("get");
-                                cy.add({
+                                cy.add($.extend(true,{
                                     group: "nodes",
                                     renderedPosition: {
                                         x: relX,
                                         y: relY
                                     }
-                                });
+                                }, options.nodeParams()));
 
                             }
                         });
